@@ -1,0 +1,97 @@
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cg: <http://dataexchange.clinicalgenome.org/terms/> .
+@prefix sepio: <http://purl.obolibrary.org/obo/SEPIO_> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geno: <http://purl.obolibrary.org/obo/GENO_> .
+@prefix iao: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+
+cg:EvidenceLevelAssertionShape
+    a sh:NodeShape ;
+    sh:targetClass sepio:0002001 ;
+    sh:class sepio:0002001 ;
+    sh:property [
+        sh:path sepio:0000388 ;
+        sh:name "Gene Dosage Proposition" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node cg:GeneDosagePropositionShape ;
+        ] ;
+    sh:property [
+        sh:path (sepio:0000389 skos:inScheme) ;
+        sh:name "Evidence Level Predicate" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue sepio:0002011 ;
+        ] ;
+    sh:property [
+        sh:path (sepio:0000390 skos:inScheme) ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue sepio:0002005 ;
+        ] ;
+    sh:property [
+        sh:path sepio:0000189 ;
+        sh:node cg:StudyFindingShape ;
+        ] .
+        
+cg:GeneDosagePropositionShape 
+    a sh:NodeShape ;
+    sh:class sepio:0002003 ;
+    sh:property [
+        sh:path sepio:0000388 ;
+        sh:name "Proposition Subject" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node cg:GeneDosageShape
+        ] ;
+    sh:property [
+        sh:path (sepio:0000389 skos:inScheme) ;
+        sh:name "Proposition Predicate" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:hasValue sepio:0002010 ;
+        ] ;
+    sh:property [
+        # TODO: This will be any object of type mondo:0000001 (Disease)
+        # Need to validate against that...
+        sh:path sepio:0000390 ;
+        sh:name "Proposition Object" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        ] .
+
+cg:GeneDosageShape
+    a sh:NodeShape ;
+    sh:class geno:0000923 ;
+    sh:property [
+        sh:path geno:0000917 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        ] ;
+    sh:property [
+        sh:path geno:0000445 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        ] .
+        
+    
+cg:StudyFindingShape
+    a sh:NodeShape ;
+    sh:class sepio:0000173 ;
+    sh:property [
+        sh:path iao:0000115 ;
+        sh:minCount 1 ;
+        ] ;
+    sh:property [
+sh:path.
+        
+        
+
+    
